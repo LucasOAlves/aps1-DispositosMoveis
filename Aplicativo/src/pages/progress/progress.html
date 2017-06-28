@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{ "PROGRESS_TITLE" | translate }}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item no-lines>
+    <ion-searchbar
+      [(ngModel)]="searchInput"
+      [showCancelButton]="false"
+      (ionInput)="onInput($event)">
+    </ion-searchbar>
+  </ion-item>
+
+  <ion-item *ngIf="messageSearch.length > 0" no-lines text-wrap>
+    <p>{{messageSearch}}</p>
+  </ion-item>
+
+  <!-- Message no result -->
+  <ion-item *ngIf="message.length > 0" no-lines text-wrap>
+    <p>{{message}}</p>
+  </ion-item>
+
+  <!-- Progress cards -->
+  <ion-card *ngFor="let d of data" color="light">
+
+    <ion-card-header>
+      <div class="h" text-wrap>{{d.name}}</div>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-label>
+        <div class="title">{{ "MESSAGE_PROGRESS_2" | translate }}</div>
+        <p>{{ "MESSAGE_PROGRESS_3" | translate }}: {{d.totalA}}</p>
+      </ion-label>
+      <progress-bar [progress]="d.A" class="activity-bar"></progress-bar>
+
+      <ion-label>
+        <div class="title">{{ "MESSAGE_PROGRESS_4" | translate }}</div>
+        <p>{{ "MESSAGE_PROGRESS_5" | translate }}: {{d.totalD}}</p>
+      </ion-label>
+      <progress-bar [progress]="d.D" class="document-bar"></progress-bar>
+
+      <ion-label>
+        <div class="title">Total</div>
+        <p>{{ "MESSAGE_PROGRESS_6" | translate }}: {{d.total}}</p>
+      </ion-label>
+      <progress-bar [progress]="d.T" class="total-bar"></progress-bar>
+    </ion-card-content>
+
+  </ion-card>
+
+
+</ion-content>

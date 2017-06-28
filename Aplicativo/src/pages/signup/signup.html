@@ -1,0 +1,105 @@
+<ion-content padding>
+  <ion-list>
+
+    <!-- Button Close -->
+    <ion-buttons end>
+      <button icon-only class="button_close" (click)="backLoginPage()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <!-- Title -->
+    <ion-item-group>
+      <ion-item color="transparent" style="text-align:center;font-size: 20px">{{ "SIGNUP_TITLE" | translate }}</ion-item>
+    </ion-item-group>
+
+    <!-- Form -->
+    <form [formGroup]="formSignUp">
+
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!-- Input name -->
+      <ion-item>
+        <ion-label floating color="dark">{{ "SIGNUP_COMPLETE_NAME" | translate }}</ion-label>
+        <ion-input formControlName="nameV" type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!formSignUp.controls.nameV.valid && (formSignUp.controls.nameV.dirty || submitAttempt)" no-lines>
+          <p>{{ "SIGNUP_MESSAGE_1" | translate }}</p>
+      </ion-item>
+
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!-- Input username -->
+      <ion-item>
+        <ion-label floating color="dark">{{ "SIGNUP_USERNAME" | translate }}</ion-label>
+        <ion-input formControlName="usernameV" type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!formSignUp.controls.usernameV.valid && (formSignUp.controls.usernameV.dirty || submitAttempt)" no-lines>
+          <p>{{ "SIGNUP_MESSAGE_2" | translate }}</p>
+      </ion-item>
+
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!-- Input email -->
+      <ion-item>
+        <ion-label floating color="dark">{{ "SIGNUP_EMAIL" | translate }}</ion-label>
+        <ion-input formControlName="emailV" type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!formSignUp.controls.emailV.valid && (formSignUp.controls.emailV.dirty || submitAttempt)" no-lines>
+          <p>{{ "SIGNUP_MESSAGE_3" | translate }}</p>
+      </ion-item>
+
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!-- Input password -->
+      <ion-item>
+        <ion-label floating color="dark">{{ "SIGNUP_PASSWORD" | translate }}</ion-label>
+        <ion-input formControlName="passwordV1" type="password" [(ngModel)]="password1"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!formSignUp.controls.passwordV1.valid && (formSignUp.controls.passwordV1.dirty || submitAttempt)" no-lines>
+          <p>{{ "SIGNUP_MESSAGE_4" | translate }}</p>
+      </ion-item>
+
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!-- Input password confirmation -->
+      <ion-item>
+        <ion-label floating color="dark">{{ "SIGNUP_CPASSWORD" | translate }}</ion-label>
+        <ion-input formControlName="passwordV2" type="password" [(ngModel)]="password2"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!formSignUp.controls.passwordV2.valid && (formSignUp.controls.passwordV2.dirty || submitAttempt)" no-lines>
+          <p>{{ "SIGNUP_MESSAGE_5" | translate }}</p>
+      </ion-item>
+      <br><br>
+
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!--**************************************************************************************-->
+      <!-- Button Create Account -->
+      <button ion-button block large type="submit" color="logo-color" (click)="createAccount()">
+        {{ "SIGNUP_CREATE_ACCOUNT" | translate }}
+      </button>
+    </form>
+
+    <!-- Or connect with -->
+    <ion-item-group>
+      <ion-item color="transparent" style="text-align:center;">{{ "CONNECT" | translate }}</ion-item>
+    </ion-item-group>
+
+    <!-- logo facebook twitter buttons -->
+    <ion-item no-border style="text-align:center;">
+      <button style="border-color: #3b5998;" icon-only class="button_social_network">
+        <ion-icon color="facebook-color" name="logo-facebook"></ion-icon>
+      </button>
+      <button style="border-color: #00aced;" icon-only class="button_social_network">
+        <ion-icon color="twitter-color" name="logo-twitter"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

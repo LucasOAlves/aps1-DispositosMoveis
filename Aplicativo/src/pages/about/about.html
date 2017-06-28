@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{ "ABOUT_TITLE" | translate }}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <h2>{{ "TOPIC_1" | translate }}</h2>
+      <p>
+        {{ "TOPIC_2" | translate }} <br>
+      </p>
+    </ion-item>
+    <ion-item>
+      <h2>{{ "TOPIC_3" | translate }}</h2>
+      <p text-wrap>
+        Gianluca Maziero Machado Ra: 1478974 <br>
+        {{ "TOPIC_4" | translate }} <br>
+        UTFPR - Universidade Tecnológica Federal do Paraná
+      </p>
+    </ion-item>
+    <ion-item>
+      <p text-wrap>
+        Lucas de Oliveira Alves Ra: 1478230 <br>
+        {{ "TOPIC_4" | translate }} <br>
+        UTFPR - Universidade Tecnológica Federal do Paraná
+      </p>
+    </ion-item>
+    <ion-item>
+        <h2>{{ "TOPIC_5" | translate }}</h2>
+        <p>0.0.1 2017-03-25</p>
+    </ion-item>
+    <ion-item></ion-item>
+  </ion-list>
+</ion-content>

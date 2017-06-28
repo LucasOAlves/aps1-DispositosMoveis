@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{ "HOME_TITLE" | translate }}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item *ngIf="message.length == 0" no-lines>
+    <ion-searchbar
+      [(ngModel)]="searchInput"
+      [showCancelButton]="false"
+      (ionInput)="onInput($event)"
+      (ionCancel)="loadDisciplines()">
+    </ion-searchbar>
+  </ion-item>
+
+  <ion-item *ngIf="message.length > 0" no-lines text-wrap>
+    <p>{{message}}</p>
+  </ion-item>
+
+  <ion-item *ngIf="messageSearch.length > 0" no-lines text-wrap>
+    <p>{{messageSearch}}</p>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let discipline of disciplines" color="card-color" class="item_">
+
+      <ion-label (click)="activitiesCall(discipline.name)">
+      <p text-wrap>{{discipline.name}}</p>
+      <p text-wrap>{{discipline.description}}</p>
+      <ion-badge color="navbar">{{discipline.classroom}}</ion-badge>
+      </ion-label>
+
+      <!-- Delete and Edit button -->
+      <button ion-button clear item-right icon-only color="dark" (click)="deleteConfirm(discipline.name)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button clear item-right icon-only color="dark" (click)="editDiscipline(discipline.name,discipline.description,discipline.classroom)">
+        <ion-icon name="create"></ion-icon>
+      </button>
+
+      </ion-item>
+    </ion-list>
+
+  <!-- floating Button -->
+  <ion-fab bottom right fixed (click)="addDiscipline()">
+    <button ion-fab color="navbar">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

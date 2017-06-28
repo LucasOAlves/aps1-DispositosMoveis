@@ -1,0 +1,32 @@
+page-progress {
+
+}
+
+.h {
+  font-weight: 600;
+  text-align: center;
+  font-size: 25px;
+}
+
+.activity-bar{
+  .progress-inner{
+    background-color: color($colors,progress-activity);
+  }
+}
+
+.document-bar{
+  .progress-inner{
+    background-color: color($colors,progress-document);
+  }
+}
+
+.total-bar{
+  .progress-inner{
+    background-color: color($colors,progress-total);
+  }
+}
+
+.title{
+  font-size: 20px;
+  font-weight: 900;
+}

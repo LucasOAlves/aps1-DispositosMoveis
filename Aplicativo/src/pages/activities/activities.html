@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{discipline}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="selectDone()">
+        <ion-icon name="done-all" [color]="colorSelector"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngIf="message.length > 0" no-lines text-wrap>
+    <p>{{message}}</p>
+  </ion-item>
+
+  <!-- List of Activities -->
+  <ion-card *ngFor="let activity of activities">
+    <ion-list>
+      <ion-item color="card-color">
+
+        <!-- Delete and Edit button -->
+        <button ion-button clear item-right icon-only color="dark" (click)="deleteConfirm(activity.name)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        <button ion-button clear item-right icon-only color="dark" (click)="editAtv(activity.name,activity.description,activity.date)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+
+        <!-- Activity Name -->
+        <ion-label>
+          {{activity.name}}
+        </ion-label>
+        <ion-checkbox color="navbar" checked="{{activity.checked}}" (ionChange)="changeStatusCheck($event,activity.name)"></ion-checkbox>
+      </ion-item>
+
+      <!-- Description and Date -->
+      <ion-item>
+        <p text-wrap>{{ "ACTIVITIES_DESCRIPTION" | translate }}: {{activity.description}}</p>
+        <p>{{ "ACTIVITIES_DATE" | translate }}: {{activity.date}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <!-- floating Button -->
+  <ion-fab bottom right fixed (click)="addAtv()">
+    <button ion-fab color="navbar">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

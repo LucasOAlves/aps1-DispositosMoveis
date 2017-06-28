@@ -1,0 +1,55 @@
+<ion-content class="no-scroll" padding>
+
+  <ion-list>
+
+    <!-- Logo do App -->
+    <div class="image_position">
+      <img [src]="path_logo">
+    </div>
+
+    <!-- Input Username -->
+    <ion-item>
+      <ion-label floating color="dark">{{ "USERNAME" | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <!-- Input Password -->
+    <ion-item>
+      <ion-label floating color="dark">{{ "PASSWORD" | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="message.length > 0" no-lines text-wrap>
+      <p style="color: red;">{{message}}</p>
+    </ion-item>
+    <br><br>
+
+    <!-- Button Log in -->
+    <button ion-button block large color="logo-color" (click)="login()">
+      {{ "LOGIN" | translate }}
+    </button>
+
+    <!-- Or connect with -->
+    <ion-item-group>
+      <ion-item color="transparent" style="text-align:center;">{{ "CONNECT" | translate }}</ion-item>
+    </ion-item-group>
+
+    <!-- logo facebook twitter buttons -->
+    <ion-item no-border style="text-align:center;" no-lines>
+      <button style="border-color: #3b5998;" icon-only class="button_social_network">
+        <ion-icon color="facebook-color" name="logo-facebook"></ion-icon>
+      </button>
+      <button style="border-color: #00aced;" icon-only class="button_social_network">
+        <ion-icon color="twitter-color" name="logo-twitter"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<!-- Footer -->
+<ion-footer no-border>
+  <ion-navbar color="footer">
+    <button class="button_footer" (click)="signupPageCall()">{{ "SIGNUP" | translate }}</button>
+    <button class="button_footer">{{ "FORGOT" | translate }}</button>
+  </ion-navbar>
+</ion-footer>

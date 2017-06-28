@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backHome()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{discipline}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="selectDone()">
+        <ion-icon name="done-all" [color]="colorSelector"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngIf="message.length > 0" no-lines text-wrap>
+    <p>{{message}}</p>
+  </ion-item>
+
+  <!-- List of Documents -->
+  <ion-card *ngFor="let document of documents">
+    <ion-list>
+      <ion-item color="card-color">
+
+        <!-- Delete and Edit button -->
+        <button ion-button clear item-right icon-only color="dark" (click)="deleteConfirm(document.name)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        <button ion-button clear item-right icon-only color="dark" (click)="editDoc(document.name,document.responsible,document.local,document.date)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+
+        <!-- Activity Name -->
+        <ion-label>
+          {{document.name}}
+        </ion-label>
+        <ion-checkbox color="logo-color" checked="{{document.checked}}" (ionChange)="changeStatusCheck($event, document.name)"></ion-checkbox>
+      </ion-item>
+
+      <!-- Description and Date -->
+      <ion-item>
+        <p>{{ "DOCUMENT_ITEM_1" | translate }}: {{document.responsible}}</p>
+        <p>{{ "DOCUMENT_ITEM_2" | translate }}: {{document.local}}</p>
+        <p>{{ "DOCUMENT_ITEM_3" | translate }}: {{document.date}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <!-- floating Button -->
+  <ion-fab bottom right fixed (click)="addDoc()">
+    <button ion-fab color="navbar">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-menu [content]="pages">
+  <ion-header>
+    <ion-navbar color="navbar">
+      <ion-title>Menu</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="openSettings()">
+          <ion-icon name="settings"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content block>
+    <ion-list>
+
+      <!-- Menu item home -->
+      <ion-item menuClose (click)="open(home)">
+        <img src="assets/img/icon.png" class="logo_menu">
+        <h2>Activity Organizer</h2>
+        <p>{{user}}</p>
+      </ion-item>
+
+      <!-- Menu button serach -->
+      <button menuClose ion-item icon-left (click)="open(search)">
+        <ion-icon name="search"></ion-icon>
+        {{ "SEARCH_TITLE" | translate }}
+      </button>
+
+      <!-- Menu button progress -->
+      <button menuClose ion-item icon-left (click)="open(progress)">
+        <ion-icon name="thermometer"></ion-icon>
+        {{ "PROGRESS_TITLE" | translate }}
+      </button>
+
+      <!-- Menu button Settings -->
+      <button menuClose ion-item (click)="open(settings)">
+        <ion-icon name="settings"></ion-icon>
+        {{ "SETTINGS_TITLE" | translate }}
+      </button>
+
+      <!-- Menu button About -->
+      <button menuClose ion-item (click)="open(about)">
+        <ion-icon name="information-circle"></ion-icon>
+        {{ "ABOUT_TITLE" | translate }}
+      </button>
+
+      <!-- Menu button Log out -->
+      <button menuClose ion-item (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+        {{ "MENU_LOGOUT" | translate }}
+      </button>
+      <ion-item></ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #pages [root]="currentPage" [rootParams]="params"></ion-nav>
